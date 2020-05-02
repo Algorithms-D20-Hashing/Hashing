@@ -54,7 +54,7 @@ public class LinearProbingHashST<Key, Value>
    
    public void delete(Key key)
    {
-      //if (!contains(key)) return;
+      if (!contains(key)) return;
       int i = hash(key);
       while (!key.equals(keys[i]))
          i = (i + 1) % M;
@@ -74,5 +74,14 @@ public class LinearProbingHashST<Key, Value>
       N--;
       if (N > 0 && N <= M/8)
          resize(M/2);
+   }
+   
+   public boolean contains(Key key) {
+	   for(int i = 0; i < M; i++) {
+		   if(keys[i] == key) {
+			   return true;
+		   }
+	   }
+	   return false;
    }
 }
