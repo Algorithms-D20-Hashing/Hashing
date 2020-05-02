@@ -1,11 +1,11 @@
 public class LinearProbingHashST<Key, Value>
 {
+   private int multValue = 2;
    private int N;         // number of key-value pairs in the table
-   private int M = 16;    // size of linear-probing table
+   private int M = 321165 * multValue;    // size of linear-probing table
    private Key[] keys;    // the keys
    private Value[] vals;  // the values
-   private int multValue = 2;
-   
+
 
    public LinearProbingHashST()
    {
