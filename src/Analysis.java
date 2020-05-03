@@ -10,23 +10,24 @@ public class Analysis {
 		LinkedList<Double> quarterDictTimes = new LinkedList<Double>();
 		LinkedList<Double> eigthDictTimes = new LinkedList<Double>();
 		
+		
 		//Fill full dictionary. Mult Factor: x8
-		fullDictTimes.add(fillFull(8));
+		fullDictTimes.add(fill(8, 321165));
 		
 		//Fill full dictionary. Mult Factor: x4
-		fullDictTimes.add(fillFull(4));
+		fullDictTimes.add(fill(4, 321165));
 		
 		//Fill full dictionary. Mult Factor: x2
-		fullDictTimes.add(fillFull(2));
+		fullDictTimes.add(fill(2, 321165));
 		
 		//Fill full dictionary. Mult Factor: x1.5
-		fullDictTimes.add(fillFull(1.5));
+		fullDictTimes.add(fill(1.5, 321165));
 		
 		//Fill full dictionary. Mult Factor: x1.25
-		fullDictTimes.add(fillFull(1.25));
+		fullDictTimes.add(fill(1.25, 321165));
 		
 		//Fill full dictionary. Mult Factor: x1.125
-		fullDictTimes.add(fillFull(1.125));
+		fullDictTimes.add(fill(1.125, 321165));
 		
 		//Print times
 		System.out.println(fullDictTimes);
@@ -34,22 +35,22 @@ public class Analysis {
 		
 		
 		//Fill half dictionary. Mult Factor: x8
-		halfDictTimes.add(fillHalf(8));
+		halfDictTimes.add(fill(8, 160582));
 		
 		//Fill half dictionary. Mult Factor: x4
-		halfDictTimes.add(fillHalf(4));
+		halfDictTimes.add(fill(4, 160582));
 		
 		//Fill half dictionary. Mult Factor: x2
-		halfDictTimes.add(fillHalf(2));
+		halfDictTimes.add(fill(2, 160582));
 		
 		//Fill half dictionary. Mult Factor: x1.5
-		halfDictTimes.add(fillHalf(1.5));
+		halfDictTimes.add(fill(1.5, 160582));
 		
 		//Fill half dictionary. Mult Factor: x1.25
-		halfDictTimes.add(fillHalf(1.25));
+		halfDictTimes.add(fill(1.25, 160582));
 		
 		//Fill half dictionary. Mult Factor: x1.125
-		halfDictTimes.add(fillHalf(1.125));
+		halfDictTimes.add(fill(1.125, 160582));
 		
 		//Print times
 		System.out.println(halfDictTimes);
@@ -57,22 +58,22 @@ public class Analysis {
 		
 		
 		//Fill quarter dictionary. Mult Factor: x8
-		quarterDictTimes.add(fillQuarter(8));
+		quarterDictTimes.add(fill(8, 80291));
 		
 		//Fill quarter dictionary. Mult Factor: x4
-		quarterDictTimes.add(fillQuarter(4));
+		quarterDictTimes.add(fill(4, 80291));
 		
 		//Fill quarter dictionary. Mult Factor: x2
-		quarterDictTimes.add(fillQuarter(2));
+		quarterDictTimes.add(fill(2, 80291));
 		
 		//Fill quarter dictionary. Mult Factor: x1.5
-		quarterDictTimes.add(fillQuarter(1.5));
+		quarterDictTimes.add(fill(1.5, 80291));
 		
 		//Fill quarter dictionary. Mult Factor: x1.25
-		quarterDictTimes.add(fillQuarter(1.25));
+		quarterDictTimes.add(fill(1.25, 80291));
 		
 		//Fill quarter dictionary. Mult Factor: x1.125
-		quarterDictTimes.add(fillQuarter(1.125));
+		quarterDictTimes.add(fill(1.125, 80291));
 		
 		//Print times
 		System.out.println(quarterDictTimes);
@@ -80,22 +81,22 @@ public class Analysis {
 		
 		
 		//Fill eigth dictionary. Mult Factor: x8
-		eigthDictTimes.add(fillEigth(8));
+		eigthDictTimes.add(fill(8, 40145));
 		
 		//Fill eigth dictionary. Mult Factor: x4
-		eigthDictTimes.add(fillEigth(4));
+		eigthDictTimes.add(fill(4, 40145));
 		
 		//Fill eigth dictionary. Mult Factor: x2
-		eigthDictTimes.add(fillEigth(2));
+		eigthDictTimes.add(fill(2, 40145));
 		
 		//Fill eigth dictionary. Mult Factor: x1.5
-		eigthDictTimes.add(fillEigth(1.5));
+		eigthDictTimes.add(fill(1.5, 40145));
 		
 		//Fill eigth dictionary. Mult Factor: x1.25
-		eigthDictTimes.add(fillEigth(1.25));
+		eigthDictTimes.add(fill(1.25, 40145));
 		
 		//Fill eigth dictionary. Mult Factor: x1.125
-		eigthDictTimes.add(fillEigth(1.125));
+		eigthDictTimes.add(fill(1.125, 40145));
 		
 		//Print times
 		System.out.println(eigthDictTimes);
@@ -103,45 +104,13 @@ public class Analysis {
 		
 	}
 	
-	//Fills hash table with 321,165 values
-	public static double fillFull(double multFactor) throws IOException {
-		LinearProbingHashST hashST = new LinearProbingHashST(0, multFactor);
-		EnglishDictionaryExtractor ede = new EnglishDictionaryExtractor();
-		Stopwatch watch = new Stopwatch();
-		while(ede.hasNext()) {
-			hashST.put(ede.next(), 1);
-		}
-		return watch.elapsedTime();
-	}
 	
-	//Fills hash table with 160,582 values
-	public static double fillHalf(double multFactor) throws IOException {
+	//Fills hash table with specified number of values with a specified multiplicative factor for resizing
+	public static double fill(double multFactor, int fillLength) throws IOException {
 		LinearProbingHashST hashST = new LinearProbingHashST(0, multFactor);
 		EnglishDictionaryExtractor ede = new EnglishDictionaryExtractor();
 		Stopwatch watch = new Stopwatch();
-		for(int i = 0; i < 160582; i++) {
-			hashST.put(ede.next(), 1);
-		}
-		return watch.elapsedTime();
-	}
-	
-	//Fills hash table with 80,291 values
-	public static double fillQuarter(double multFactor) throws IOException {
-		LinearProbingHashST hashST = new LinearProbingHashST(0, multFactor);
-		EnglishDictionaryExtractor ede = new EnglishDictionaryExtractor();
-		Stopwatch watch = new Stopwatch();
-		for(int i = 0; i < 80291; i++) {
-			hashST.put(ede.next(), 1);
-		}
-		return watch.elapsedTime();
-	}
-	
-	//Fills hash table with 80,291 values
-	public static double fillEigth(double multFactor) throws IOException {
-		LinearProbingHashST hashST = new LinearProbingHashST(0, multFactor);
-		EnglishDictionaryExtractor ede = new EnglishDictionaryExtractor();
-		Stopwatch watch = new Stopwatch();
-		for(int i = 0; i < 80291; i++) {
+		for(int i = 0; i < fillLength; i++) {
 			hashST.put(ede.next(), 1);
 		}
 		return watch.elapsedTime();
