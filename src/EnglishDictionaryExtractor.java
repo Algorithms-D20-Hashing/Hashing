@@ -24,8 +24,7 @@ public class EnglishDictionaryExtractor implements Iterable<String>, Iterator<St
 	 *     
 	 * @throws IOException
 	 */
-	public EnglishDictionaryExtractor(int id) throws IOException {
-		String chapterID = String.format("%02d", id);
+	public EnglishDictionaryExtractor() throws IOException {
 		File taleDir = null;
 		// let user override if possible
 		if (actualDir != null) {
@@ -59,7 +58,7 @@ public class EnglishDictionaryExtractor implements Iterable<String>, Iterator<St
 	
 	/** Run this to validate that it works. If not, see a TA/SA/Professor immediately. */
 	public static void main(String[] args) throws IOException {
-		EnglishDictionaryExtractor te = new EnglishDictionaryExtractor(1);
+		EnglishDictionaryExtractor te = new EnglishDictionaryExtractor();
 		
 		String firstWord = te.next();
 		String secondWord = te.next();

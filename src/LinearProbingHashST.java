@@ -1,8 +1,8 @@
 public class LinearProbingHashST<Key, Value>
 {
-   private int multValue = 2;
+   private double multValue = 2;
    private int N;         // number of key-value pairs in the table
-   private int M = 321165 * multValue;    // size of linear-probing table
+   private int M = (int) (321165 * multValue);    // size of linear-probing table
    private Key[] keys;    // the keys
    private Value[] vals;  // the values
 
@@ -20,10 +20,11 @@ public class LinearProbingHashST<Key, Value>
       vals = (Value[]) new Object[M];
    }
    
-   public LinearProbingHashST(int cap, int multValue)
+   public LinearProbingHashST(int cap, double multValue)
    {
 	  M = cap;
 	  this.multValue = multValue;
+	  M = (int) (321165 * multValue);
       keys = (Key[])    new Object[M];
       vals = (Value[]) new Object[M];
    }
@@ -46,7 +47,7 @@ public class LinearProbingHashST<Key, Value>
 
    public void put(Key key, Value val)
    {
-      if (N >= M/2) resize(multValue*M);  // resize M by the indicated multiplicative value (see text)
+      if (N >= M/2) resize((int)(multValue*M));  // resize M by the indicated multiplicative value (see text)
       int i;
       for (i = hash(key); keys[i] != null; i = (i + 1) % M)
          if (keys[i].equals(key)) { vals[i] = val; return; }
