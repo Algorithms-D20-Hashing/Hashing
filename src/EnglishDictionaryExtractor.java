@@ -31,7 +31,7 @@ public class EnglishDictionaryExtractor implements Iterable<String>, Iterator<St
 			taleDir = actualDir;
 		} else {
 			String homeDir = System.getProperty("user.home");  // %HOMEDIR%/git is where git places files
-			String gitDir = "eclipse-workspace";
+			String gitDir = "git";
 			String gitProject = "Hashing";                   // my git repo is here
 			String dir = "src";                   // this is the name of my project
 			String tale = "tale";                              // folder contains all chapters
