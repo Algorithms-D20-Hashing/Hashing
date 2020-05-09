@@ -92,6 +92,29 @@ public class Analysis {
 		System.out.print("1.5x: " + q5GetTimes.get(3) + "s   ");
 		System.out.print("1.25x: " + q5GetTimes.get(4) + "s   ");
 		System.out.print("1.125x: " + q5GetTimes.get(5) + "s   ");
+		
+		LinkedList<Double> q5DeleteTimes = new LinkedList<Double>();
+		//Fill full dictionary. Mult Factor: 8x
+		q5DeleteTimes.add(testGet(8, 321165));
+		//Fill full dictionary. Mult Factor: 4x
+		q5DeleteTimes.add(testGet(4, 321165));
+		//Fill full dictionary. Mult Factor: 2x
+		q5DeleteTimes.add(testGet(2, 321165));
+		//Fill full dictionary. Mult Factor: 1.5x
+		q5DeleteTimes.add(testGet(1.5, 321165));
+		//Fill full dictionary. Mult Factor: 1.25x
+		q5DeleteTimes.add(testGet(1.25, 321165));
+		//Fill full dictionary. Mult Factor: 1.125x
+		q5DeleteTimes.add(testGet(1.125, 321165));
+		
+		//Print results
+		System.out.println("\n\nDelete Times:");
+		System.out.print("8x: " + q5DeleteTimes.get(0) + "s   ");
+		System.out.print("4x: " + q5DeleteTimes.get(1) + "s   ");
+		System.out.print("2x: " + q5DeleteTimes.get(2) + "s   ");
+		System.out.print("1.5x: " + q5DeleteTimes.get(3) + "s   ");
+		System.out.print("1.25x: " + q5DeleteTimes.get(4) + "s   ");
+		System.out.print("1.125x: " + q5DeleteTimes.get(5) + "s   ");
 	}
 	
 	
@@ -152,6 +175,25 @@ public class Analysis {
 		Stopwatch watch = new Stopwatch();
 		for(int i = 0; i < fillLength; i++) {
 			hashST.get(ede.next());
+		}
+		return watch.elapsedTime();
+	}
+	
+	
+	
+	
+	public static double testDelete(double multFactor, int fillLength) throws IOException {
+		LinearProbingHashST hashST = new LinearProbingHashST(0, multFactor);
+		EnglishDictionaryExtractor ede = new EnglishDictionaryExtractor();
+		for(int i = 0; i < fillLength; i++) {
+			hashST.put(ede.next(), 1);
+		}
+		
+		ede = new EnglishDictionaryExtractor();
+		
+		Stopwatch watch = new Stopwatch();
+		for(int i = 0; i < fillLength; i++) {
+			hashST.delete(ede.next());
 		}
 		return watch.elapsedTime();
 	}
