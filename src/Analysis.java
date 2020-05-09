@@ -95,17 +95,17 @@ public class Analysis {
 		
 		LinkedList<Double> q5DeleteTimes = new LinkedList<Double>();
 		//Fill full dictionary. Mult Factor: 8x
-		q5DeleteTimes.add(testGet(8, 321165));
+		q5DeleteTimes.add(testDelete(8, 321165));
 		//Fill full dictionary. Mult Factor: 4x
-		q5DeleteTimes.add(testGet(4, 321165));
+		q5DeleteTimes.add(testDelete(4, 321165));
 		//Fill full dictionary. Mult Factor: 2x
-		q5DeleteTimes.add(testGet(2, 321165));
+		q5DeleteTimes.add(testDelete(2, 321165));
 		//Fill full dictionary. Mult Factor: 1.5x
-		q5DeleteTimes.add(testGet(1.5, 321165));
+		q5DeleteTimes.add(testDelete(1.5, 321165));
 		//Fill full dictionary. Mult Factor: 1.25x
-		q5DeleteTimes.add(testGet(1.25, 321165));
+		q5DeleteTimes.add(testDelete(1.25, 321165));
 		//Fill full dictionary. Mult Factor: 1.125x
-		q5DeleteTimes.add(testGet(1.125, 321165));
+		q5DeleteTimes.add(testDelete(1.125, 321165));
 		
 		//Print results
 		System.out.println("\n\nDelete Times:");
