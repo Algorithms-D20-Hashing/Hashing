@@ -85,7 +85,7 @@ public class LinearProbingHashST<Key, Value>
       }
       N--;
       if (N > 0 && N <= M/8)
-         resize(M/2);
+         resize((int)(M/multValue));
    }
    
    public boolean contains(Key key) {
